@@ -53,3 +53,24 @@ let rec add e1 e2 =
 
 
 
+(* Convert standard modern fraction to egyptian fraction by 
+ * breaking it down into a sum of egyptian fraction singletons.
+ *
+ * For example: 3/5 = 1/5 + 1/5 + 1/5*)
+let rec modern_to_egyptian q = 
+  (*First get numerator*)
+  let num = Q.num q in
+  let den = Q.den q in
+  (* If num is one, then q is already in Egyptian form *)
+  if (num==Z.one) 
+    then
+      S.singleton den
+    (*If num>1 then we can subtract 1/den from q 
+     * and then recurse*)
+    else
+      let nextq = Q.make (num-Z.one) (den) in
+      add (S.singleton den) (modern_to_egyptian nextq)
+
+
+
+

@@ -8,5 +8,7 @@ let q = to_modern (add e1 e2)
 
 
 
+let () = Printf.printf ("%s\n") (egyptian_to_string (modern_to_egyptian (Q.make (Z.of_int 5) (Z.of_int 8))))
+
 let () = 
   Printf.printf "%s\n%s\n%s\n" (egyptian_to_string e1) (egyptian_to_string e2) (egyptian_to_string (add e1 e2))
